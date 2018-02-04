@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-init-method="turnOnLights"
+	default-destroy-method="turnOffLights"> 
+		
+	
+	<bean id="helloBean" class="com.mycompany.app.HelloWorld">
+		<property name="name" value="Glybovets"></property>
+	</bean>
+	
+	<bean id="duke" class="com.mycompany.app.Juggler">
+		<constructor-arg value="15" />		
+	</bean>
+	
+	<bean id ="shevchenko" class="com.mycompany.app.Shevchenko"/>
+	<bean id="poeticDuke" class="com.mycompany.app.PoeticJuggler">
+		<constructor-arg value = "15"/>
+		<constructor-arg ref="shevchenko"/>
+	</bean>
+	
+	<bean id = "theStage" class="com.mycompany.app.Stage" factory-method="getInstance"/>
+	
+	<bean id="auditorium"
+		class="com.mycompany.app.Auditorium"
+		init-method="turnOnLights"
+		destroy-method="turnOffLights"/>
+	
+	<bean id = "saxophone" class="com.mycompany.app.Saxophone"/>
+	<bean id = "piano" class="com.mycompany.app.Piano"/>
+	
+	
+	<bean id="kenny" class="com.mycompany.app.Instrumentalist">
+		<property name="song" value="Jingle Bells" />		
+		<property name="instrument">	
+			<bean class="com.mycompany.app.Saxophone"/>		
+		</property>	
+	</bean>
+	
+	<bean id="poeticDuke2" class="com.mycompany.app.PoeticJuggler">
+		<constructor-arg value = "15"/>
+		<constructor-arg>
+			<bean class="com.mycompany.app.Shevchenko"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id = "hank" class="com.mycompany.app.OneManBand">
+	<property name="instruments">
+	<list>
+	<ref bean="saxophone"/>
+	<ref bean="piano"/>
+	</list>
+	</property>
+</bean>
+	
+	
+	
+		
+	
+</beans>
