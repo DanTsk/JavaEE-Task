@@ -29,19 +29,12 @@ public class HomeServlet extends HttpServlet {
 	
 	private void writeMessage(PrintWriter out, String message){
 		out.println("<html>");
-
 		out.println("<head>");
-
-		out.println("<title>Â³äïîâ³äü</title>");
-
+		out.println("<title>Answer</title>");
 		out.println("</head>");
-
 		out.println("<body>");
-
 		out.println(message);
-
 		out.println("</body>");
-
 		out.println("</html>");
 	}	
 }  	
