@@ -1,8 +1,11 @@
 package com.mycompany.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class PoeticJuggler extends Juggler{
 	private Poem poem;
 	
+	@Autowired
 	public PoeticJuggler(Poem poem){
 		super();
 		this.poem = poem;

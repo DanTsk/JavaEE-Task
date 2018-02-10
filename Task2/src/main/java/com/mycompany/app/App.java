@@ -39,6 +39,10 @@ public class App {
 		
 		OneManBand hank = (OneManBand)context.getBean("hank");
 		hank.perform();
+		
+		System.out.println("\n\n");
+		Saxophonist sxman = (Saxophonist)context.getBean("sxman");
+		sxman.play();
 	}
 
 	

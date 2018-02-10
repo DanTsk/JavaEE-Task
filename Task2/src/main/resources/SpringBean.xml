@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+
 	default-init-method="turnOnLights"
-	default-destroy-method="turnOffLights"> 
-		
+	default-destroy-method="turnOffLights"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd"
+	> 
+	
+	<context:component-scan
+		base-package="com.mycompany.app">
+	</context:component-scan>
+	
 	
 	<bean id="helloBean" class="com.mycompany.app.HelloWorld">
 		<property name="name" value="Glybovets"></property>
@@ -15,10 +30,7 @@
 	</bean>
 	
 	<bean id ="shevchenko" class="com.mycompany.app.Shevchenko"/>
-	<bean id="poeticDuke" class="com.mycompany.app.PoeticJuggler">
-		<constructor-arg value = "15"/>
-		<constructor-arg ref="shevchenko"/>
-	</bean>
+	<bean id="poeticDuke" class="com.mycompany.app.PoeticJuggler"></bean>
 	
 	<bean id = "theStage" class="com.mycompany.app.Stage" factory-method="getInstance"/>
 	
@@ -31,19 +43,17 @@
 	<bean id = "piano" class="com.mycompany.app.Piano"/>
 	
 	
-	<bean id="kenny" class="com.mycompany.app.Instrumentalist">
-		<property name="song" value="Jingle Bells" />		
-		<property name="instrument">	
-			<bean class="com.mycompany.app.Saxophone"/>		
-		</property>	
+	<bean id="kenny" class="com.mycompany.app.Instrumentalist" >
+		<property name="song" value="Jingle Bells" />
 	</bean>
+	
+	<bean id="sxman" class="com.mycompany.app.Saxophonist"> </bean>
 	
 	<bean id="poeticDuke2" class="com.mycompany.app.PoeticJuggler">
 		<constructor-arg value = "15"/>
-		<constructor-arg>
-			<bean class="com.mycompany.app.Shevchenko"/>
-		</constructor-arg>
 	</bean>
+	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
 	
 	<bean id = "hank" class="com.mycompany.app.OneManBand">
 	<property name="instruments">

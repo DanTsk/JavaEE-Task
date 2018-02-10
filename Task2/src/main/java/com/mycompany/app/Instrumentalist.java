@@ -1,5 +1,9 @@
 package com.mycompany.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+
 public class Instrumentalist implements Performer{
 	public Instrumentalist() {}
 	
@@ -22,8 +26,10 @@ public class Instrumentalist implements Performer{
 		return song;
 	}
 	
+	@Autowired
+	@Qualifier("piano")
 	private Instrument instrument;
-	
+		
 	public void setInstrument(Instrument instrument){
 		this.instrument = instrument;
 	}
