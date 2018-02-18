@@ -6,6 +6,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
 
 	public static void main(String[] args) {
+		Task4();
+	}
+
+	static void Task_2_and_3(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("SpringBean.xml");
 		
 		HelloWorld obj = (HelloWorld) context.getBean("helloBean");
@@ -45,5 +49,18 @@ public class App {
 		sxman.play();
 	}
 
+	static void Task4(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("SpringBean.xml");
+		Driver dr = (Driver) context.getBean("driver");
+		dr.drive();
+		
+		System.out.println("\n\n");
+		
+		Thinker volunteer = (Thinker)context.getBean("volunteer");
+		Magician magician = (Magician)context.getBean("magician");
 	
+		volunteer.thinkOfSomething("I am THINKING ...");
+		System.out.println(magician.getThoughts());
+
+	}
 }

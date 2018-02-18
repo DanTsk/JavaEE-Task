@@ -2,9 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-	default-init-method="turnOnLights"
-	default-destroy-method="turnOffLights"
+	xmlns:aop="http://www.springframework.org/schema/aop"	
 	xsi:schemaLocation="
     http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -36,8 +34,7 @@
 	
 	<bean id="auditorium"
 		class="com.mycompany.app.Auditorium"
-		init-method="turnOnLights"
-		destroy-method="turnOffLights"/>
+		/>
 	
 	<bean id = "saxophone" class="com.mycompany.app.Saxophone"/>
 	<bean id = "piano" class="com.mycompany.app.Piano"/>
@@ -47,7 +44,7 @@
 		<property name="song" value="Jingle Bells" />
 	</bean>
 	
-	<bean id="sxman" class="com.mycompany.app.Saxophonist"> </bean>
+	<bean id="sxman" class="com.mycompany.app.Saxophonist"/>
 	
 	<bean id="poeticDuke2" class="com.mycompany.app.PoeticJuggler">
 		<constructor-arg value = "15"/>
@@ -63,9 +60,30 @@
 	</list>
 	</property>
 </bean>
+
+
+<bean id="driver" class="com.mycompany.app.Driver"/>	
+<bean id="car" class="com.mycompany.app.Car"/>	
+
+<bean id="magician" class="com.mycompany.app.Magician"/>	
+<bean id="volunteer" class="com.mycompany.app.Volunteer">
 	
-	
-	
+</bean>
+
+<aop:aspectj-autoproxy />
+<aop:config>
+	<aop:aspect ref="magician">
+		<aop:pointcut 
+		expression="execution(* com.mycompany.app.Thinker.thinkOfSomething( String)) 
+		and args(thoughts)" 
+		id="thinking"/>
 		
+		<aop:before 
+		method="interceptThoughts"
+		pointcut-ref="thinking"
+		arg-names="thoughts"/>	
+	</aop:aspect>
+</aop:config>
+
 	
 </beans>
