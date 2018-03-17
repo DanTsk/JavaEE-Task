@@ -3,6 +3,9 @@ package com.mycompany.app.entities;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+   @NamedQuery(name = "findAllCredits", query="SELECT DISTINCT c.credits FROM Lecture c")
+})
 @Table(name="Lectures")
 public class Lecture {
     @Id

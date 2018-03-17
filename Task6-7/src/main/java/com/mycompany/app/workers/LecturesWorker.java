@@ -6,6 +6,9 @@ import com.mycompany.app.daos.interfaces.StandartDao;
 import com.mycompany.app.entities.Lecture;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.Query;
+import java.util.List;
+
 public class LecturesWorker {
 
     @Autowired
@@ -18,5 +21,13 @@ public class LecturesWorker {
 
     public Lecture getLecture(int id){
         return lecturesDao.getInstance(id);
+    }
+
+    public List<Lecture> getAll(){
+        return lecturesDao.getAll();
+    }
+
+    public List<Double> getAllCredits(){
+        return lecturesDao.getAllCredits();
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -31,4 +33,13 @@ public class LectureDaoJPAImpl implements LectureDao {
         return em.find(Lecture.class,id);
     }
 
+    public List<Lecture> getAll(){
+        Query query = em.createQuery("SELECT c FROM Lecture c", Lecture.class);
+        return query.getResultList();
+    }
+
+    public List<Double> getAllCredits(){
+        Query query = em.createNamedQuery("findAllCredits");
+        return query.getResultList();
+    }
 }

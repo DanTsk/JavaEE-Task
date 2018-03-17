@@ -18,7 +18,8 @@ public class App {
 
 
 		App.testLectures(context);
-		App.testBook(context);
+
+			/*App.testBook(context);
 		App.testCd(context);
 
 		App.testNews(context);
@@ -29,7 +30,7 @@ public class App {
 		App.testTrack(context);
 		App.testCreditCard(context);
 		App.testOneToMany(context);
-		App.testManyToMany(context);
+		App.testManyToMany(context);*/
 	}
 
 
@@ -43,6 +44,18 @@ public class App {
 
 		worker.getLecture(lecture.getId());
 		worker.getLecture(lecture.getId());
+
+
+
+		List<Double> creds = worker.getAllCredits();
+		for (double cred : creds){
+			System.out.println(cred);
+		}
+
+		List<Lecture> lectures = worker.getAll();
+		for (Lecture lect : lectures){
+			System.out.println(lect.getName());
+		}
 
 	}
 
