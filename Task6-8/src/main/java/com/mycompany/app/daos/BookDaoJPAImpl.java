@@ -11,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-@Transactional
 public class BookDaoJPAImpl implements BookDao {
 
     @PersistenceContext
