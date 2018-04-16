@@ -15,17 +15,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Insert title here</title>
-</head>
-<body>
-${mainText}<br/>
-<c:if test="${studentsList ne null}">
-    <c:forEach items="${studentsList}" var="student" varStatus="index">
-        ${index.index+1}.) <a href="/students/${student.pib}">${student.pib}</a><br/>
-    </c:forEach>
-</c:if>
-<a href="/students?new">Add new student</a>
-</body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        ${mainText}<br/>
+        <c:if test="${studentsList ne null}">
+            <c:forEach items="${studentsList}" var="student" varStatus="index">
+                ${index.index+1} ${student.pib}
+            </c:forEach>
+        </c:if>
+    </body>
 </html>

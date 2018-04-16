@@ -19,7 +19,10 @@ public class Student implements Serializable {
     @Column(name = "id")
     private int studentId;
 
+
     private String pib;
+    private String roleName;
+    private String password;
     private int course;
 
 
@@ -45,5 +48,21 @@ public class Student implements Serializable {
 
     public void setCourse(int course) {
         this.course = course;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

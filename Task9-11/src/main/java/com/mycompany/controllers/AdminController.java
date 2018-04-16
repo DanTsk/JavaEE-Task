@@ -12,6 +12,8 @@ public class AdminController {
     @Autowired
     private StudentService studentsService;
 
+
+
     @RequestMapping({"/admin"})
     public String workWithStudents(Model model){
         model.addAttribute("mainText","Admin part of work with students");
